@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+
+    <div class="counter pt-5" id="app">
+      <div class="card">
+        <h1> {{title}}: {{counter}}</h1>
+        <div class="form-control">
+          <input type='text' 
+          v-bind:placeholder="placeholderString"
+          v-bind:value='inputValue'
+          v-on:input='inputChangerHandler'
+          />
+        </div>
+        <h2>inputValue: {{inputValue}}</h2>
+          <button class="btn primary" v-on:click="adNewNote">Добавить</button>
+          <hr />
+          <ul class="list">
+            <li class="list-item " v-for='mynote in notes'>
+              {{mynote}}
+            </li>
+
+          </ul>
+          <!-- <button class="btn danger" v-on:click= 'counter --'>Вычесть</button> -->
+        
+      </div>
+    </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="app.js"></script>
+  </body>
+</html>
