@@ -53,7 +53,7 @@ const app = new Vue ({
     },
     watch: {
         inputValue(value) {
-            if (value.length > 10 ) {
+            if (value.length > 15 ) {
                 this.inputValue = ''
             }
             console.log('input value changed', value )

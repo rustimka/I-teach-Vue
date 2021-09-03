@@ -10,7 +10,11 @@
 
     <div class="counter pt-5" id="app">
       <div class="card">
-        <h1> {{title}}: {{counter}}</h1>
+        <h1 :style="{
+          color: inputValue.length < 2 ? 'darkred' : 'darkblue',
+          fontSize: inputValue.length < 4 ? '2rem' : '1.5rem',
+        }"> {{title}}: {{counter}}</h1>
+        
         <div class="form-control">
           <input type='text' 
           :placeholder="placeholderString"  
@@ -24,8 +28,19 @@
           <hr />
           <ul class="list" v-if='notes.lingth !== 0'>
             <li class="list-item " v-for='(mynote, index) in notes'>
-             ({{index +1}}) {{ toUpperCase(mynote) }}
-              <button class="btn danger" v-on:click="deleteNote(index)">Удалить</button>
+              <span :class="mynote.length > 5 ? 'primary' : 'bold'">({{index +1}}) {{ toUpperCase(mynote) }}</span>
+             <!-- Можно использовать стилизацию так  -->
+             
+             <!-- <span :class="{
+              'primary': true,
+              'bold' : mynote.length > 5
+            }">({{index +1}}) {{ toUpperCase(mynote) }}</span> -->
+             <!-- Можно использовать стилизация обектом -->
+
+            <!-- <span :class="['bold', {'primary': mynote.length > 5}]">({{index +1}}) {{ toUpperCase(mynote) }}</span> -->
+            <!-- Можно использовать стилизацию масивом -->
+            
+            <button class="btn danger" v-on:click="deleteNote(index)">Удалить</button>
             </li> 
             <hr />
             <li>
