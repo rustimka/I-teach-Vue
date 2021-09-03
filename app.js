@@ -15,9 +15,27 @@ const app = new Vue ({
            this.inputValue = event.target.value
 
         },
-        adNewNote(event) {
-            this.notes.push(this.inputValue)
+        addNewNote(event) {
+            if (this.inputValue !== '') {
+                this.notes.push(this.inputValue)
             this.inputValue = ""
-        }
+            }
+           
+        },
+        // inputKeyPress(event) {
+        //    if (event.key === "Enter") {
+        //        this.addNewNote()
+        //     }
+        // }
+        // Замена 19 строке v-on:keypress.enter='addNewNote' в место v-on:keypress='inputKeyPress'//
+    
+        deleteNote(index) {
+            this.notes.splice(index, 1)
+            
+        },
+        toUpperCase(item) {
+            return item.toUpperCase()
+        },
     }
+    
 });
