@@ -13,10 +13,9 @@
         <h1> {{title}}: {{counter}}</h1>
         <div class="form-control">
           <input type='text' 
-          :placeholder="placeholderString"
-          v-bind:value='inputValue'
-          @input='inputChangerHandler'
-          v-on:keypress.enter='addNewNote'
+          :placeholder="placeholderString"  
+          v-model='inputValue'
+          @keypress.enter='addNewNote'
           
           />
         </div>
@@ -28,6 +27,10 @@
              ({{index +1}}) {{ toUpperCase(mynote) }}
               <button class="btn danger" v-on:click="deleteNote(index)">Удалить</button>
             </li> 
+            <hr />
+            <li>
+              <strong>Обшее количество: {{ notes.length }}</strong> | Удвоенно: {{ doubleCountComputed }}
+            </li>
 
           </ul>
           <div v-else-if='notes.length === 0'>Заметок нет</div>

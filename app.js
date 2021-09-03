@@ -11,10 +11,13 @@ const app = new Vue ({
     
     },
     methods:{
-        inputChangerHandler(event) {
-           this.inputValue = event.target.value
+        // inputChangerHandler(event) {
+        //    this.inputValue = event.target.value
 
-        },
+        // },
+        // Замена  17 и 18 строке (17) v-bind:value='inputValue', (18) @input='inputChangerHandler'
+
+
         addNewNote(event) {
             if (this.inputValue !== '') {
                 this.notes.push(this.inputValue)
@@ -28,14 +31,36 @@ const app = new Vue ({
         //     }
         // }
         // Замена 19 строке v-on:keypress.enter='addNewNote' в место v-on:keypress='inputKeyPress'//
-    
-        deleteNote(index) {
-            this.notes.splice(index, 1)
-            
-        },
+        
+        
+
         toUpperCase(item) {
             return item.toUpperCase()
         },
-    }
-    
+        deleteNote(index) {
+            this.notes.splice(index, 1)
+            
+        }
+        
+    },
+    computed: {
+        doubleCountComputed() {
+            console.log('doubleCountComputed')
+            return this.notes.length * 2
+
+        }
+
+    },
+    watch: {
+        inputValue(value) {
+            if (value.length > 10 ) {
+                this.inputValue = ''
+            }
+            console.log('input value changed', value )
+        }
+        //Слежка за переменной inputValue которая находится в обекте//
+        //Условия если строчка водимая превышает 10 символов то удалится//
+
+
+    },
 });
